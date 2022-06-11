@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Once</title>
+
+    <script>
+
+        const once = fn => {
+            let done = false;
+            console.log("once invoked")
+            return (...args) => {
+                if(!done){
+                    done = true;
+                    fn(...args)
+                }
+            }
+        }
+
+        const billTheUser = () => {
+            alert('user is billing!');
+        }
+
+        const registerUser = (name) => {
+            alert(['The user ', name, 'registered'].join(' '));
+        }
+
+        const btnClicked = once(billTheUser);
+        const btnClicked2 = once(registerUser);
+
+        
+
+    </script>
+</head>
+
+<body>
+    <button onclick="btnClicked()">Once Billing!</button>
+    <button onclick="btnClicked2('Neda')">Once Registering!</button>
+
+</body>
+
+</html>
